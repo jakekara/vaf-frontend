@@ -1,0 +1,29 @@
+.PersonListItem {
+  padding: 8px;
+  display: flex;
+  margin: 22px 0px;
+  background-color: #efefef;
+  border-radius: 3px;
+}
+
+.PersonListItem * {
+  box-sizing: border-box;
+}
+
+.Right {
+  padding-left: 14px;
+}
+.Right h2 {
+  margin-top: 0px;
+}
+
+.Thumbnail {
+  width: 80px;
+  height: 80px;
+  border: 1px solid lightgray;
+  background-color: #efefef;
+}
+
+img {
+  max-width: 100%;
+}
