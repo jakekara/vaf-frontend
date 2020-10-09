@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { Person } from "../../../api/types/Person";
 import api from "../../../api/faker";
 import TypeAhead from "./TypeAhead";
@@ -9,7 +9,6 @@ export function SearchArea(props: {
 }): ReactElement {
   const [term, setTerm] = useState<string>("");
   const [suggestions, setSuggestions] = useState<Array<Person>>([]);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   // function onChange(evt: React.ChangeEvent<HTMLInputElement>) {
   //   setTerm(evt.target.value);
