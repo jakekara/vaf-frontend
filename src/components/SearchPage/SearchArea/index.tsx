@@ -32,14 +32,12 @@ export function SearchArea(props: {
 
   useEffect(getSuggestions, [term]);
 
-  let searchTerm = inputRef && inputRef.current ? inputRef.current.value : "";
-  console.log("searchTerm", searchTerm);
   return (
     <div className={styles.SearchArea}>
       <div className="container">
         <TypeAhead
           handleClick={() => {
-            props.onSearch(searchTerm);
+            props.onSearch(term);
           }}
           suggestions={suggestions}
           handleTermChanged={setTerm}
