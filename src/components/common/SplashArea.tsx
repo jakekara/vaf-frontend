@@ -17,9 +17,7 @@ const SplashArea: FunctionComponent<SplashAreaProps> = ({
   return (
     <div
       style={{ top: offset }}
-      className={
-        `${styles.SplashArea}` + " " + `${sticky ? styles.Sticky : ""}`
-      }
+      className={`${styles.SplashArea}` + ` ${sticky ? styles.Sticky : ""}`}
     >
       {children}
     </div>
