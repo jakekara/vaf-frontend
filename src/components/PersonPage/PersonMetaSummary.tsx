@@ -7,7 +7,9 @@ interface PersonMetaSummaryProps {
   person: Person;
 }
 
-export default function PersonMetaSummary(props: PersonMetaSummaryProps) {
+export default function PersonMetaSummary(
+  props: PersonMetaSummaryProps
+): JSX.Element {
   return (
     <div className={styles.PersonMetaSummary}>
       <div className="container">

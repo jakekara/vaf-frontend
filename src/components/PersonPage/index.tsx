@@ -10,7 +10,7 @@ import SplashArea from "../common/SplashArea";
 interface PersonPageLoadedProps {
   person: Person;
 }
-function PersonPageLoaded(props: PersonPageLoadedProps) {
+function PersonPageLoaded(props: PersonPageLoadedProps): JSX.Element {
   const [sourceMaterials, setSourceMaterials] = useState<
     Array<SourceMaterial>
   >();
@@ -38,7 +38,7 @@ function PersonPageLoaded(props: PersonPageLoadedProps) {
   );
 }
 
-export default function PersonPage() {
+export default function PersonPage(): JSX.Element {
   const [person, setPerson] = useState<Person>();
   const [errorMessage, setErrorMessage] = useState<string>();
 
@@ -70,7 +70,6 @@ export default function PersonPage() {
         </div>
       </SplashArea>
     );
-  } else {
-    return <div>Loading details person with id {params.personID} </div>;
   }
+  return <div>Loading details person with id {params.personID} </div>;
 }

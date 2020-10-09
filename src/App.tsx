@@ -7,21 +7,19 @@ import TopBar from "./components/TopBar";
 
 function App() {
   return (
-    <React.Fragment>
-      <div className={styles.App}>
-        <Router>
-          <TopBar />
-          <Switch>
-            <Route path="/person/:personID">
-              <PersonPage></PersonPage>
-            </Route>
-            <Route path="/">
-              <SearchPage></SearchPage>
-            </Route>
-          </Switch>
-        </Router>
-      </div>
-    </React.Fragment>
+    <div className={styles.App}>
+      <Router>
+        <TopBar />
+        <Switch>
+          <Route path="/person/:personID">
+            <PersonPage></PersonPage>
+          </Route>
+          <Route path="/">
+            <SearchPage></SearchPage>
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

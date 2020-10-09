@@ -2,16 +2,15 @@ import React from "react";
 import SourceMaterial from "../../api/types/SourceMaterial";
 import Card from "../common/Card";
 import ObjectListing from "../common/ObjectListing";
-// import styles from "./SourceMaterialList.module.css";
 
-function SourceMaterialListItem(props: { item: SourceMaterial }) {
+function SourceMaterialListItem(props: { item: SourceMaterial }): JSX.Element {
   return (
-    // <div className={styles.SourceMaterialListItem}>
-    <Card link={props.item.url}>
-      <h4>{props.item.title}</h4>
-      <ObjectListing attributes={props.item} />
-    </Card>
-    // </div>
+    <div>
+      <Card link={props.item.url}>
+        <h4>{props.item.title}</h4>
+        <ObjectListing attributes={props.item} />
+      </Card>
+    </div>
   );
 }
 

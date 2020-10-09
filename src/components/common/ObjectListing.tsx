@@ -2,9 +2,9 @@ import React from "react";
 
 export default function ObjectListing(props: {
   attributes: { [key: string]: any };
-}) {
+}): JSX.Element {
   return (
-    <React.Fragment>
+    <div>
       {Object.keys(props.attributes).map((label, i) => {
         if (typeof props.attributes[label] === "object") {
           return null;
@@ -16,6 +16,6 @@ export default function ObjectListing(props: {
           </div>
         );
       })}
-    </React.Fragment>
+    </div>
   );
 }
