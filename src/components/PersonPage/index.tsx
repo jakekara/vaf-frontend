@@ -1,16 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Person from "../../api/types/Person";
-import * as api from "../../api/faker";
+import { Person } from "../../api/types/Person";
+import api from "../../api/faker";
+import SourceMaterial from "../../api/types/SourceMaterial";
+import SourceMaterialList from "./SourceMaterialList";
+import PersonMetaSummary from "./PersonMetaSummary";
+import SplashArea from "../common/SplashArea";
 
 interface PersonPageLoadedProps {
   person: Person;
 }
 function PersonPageLoaded(props: PersonPageLoadedProps) {
+  const [sourceMaterials, setSourceMaterials] = useState<
+    Array<SourceMaterial>
+  >();
+  const { person } = props;
+
+  useEffect(() => {
+    if (!person) {
+      return;
+    }
+    api
+      .getSourceMaterials({ personID: person?.id })
+      .then((response) => {
+        setSourceMaterials(response.items);
+      })
+      .catch((error) => {});
+  }, [person]);
+
   return (
     <div>
-      <h1>{props.person.name}</h1>
-      <div>details</div>
+      <SplashArea>
+        <PersonMetaSummary person={props.person} />
+      </SplashArea>
+      <SourceMaterialList items={sourceMaterials || []} />
     </div>
   );
 }
@@ -36,7 +59,17 @@ export default function PersonPage() {
     return <PersonPageLoaded person={person} />;
   }
   if (errorMessage) {
-    return <div>Error: {errorMessage}</div>;
+    return (
+      <SplashArea>
+        <div className="container">
+          <h1>Something went wrong</h1>
+          <p>
+            Try <a href="/">searching again</a>.
+          </p>
+          <p>Error message: {errorMessage}</p>
+        </div>
+      </SplashArea>
+    );
   } else {
     return <div>Loading details person with id {params.personID} </div>;
   }

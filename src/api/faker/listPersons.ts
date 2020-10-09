@@ -1,16 +1,14 @@
 import * as faker from "faker";
 import { QueryResponse, getEmptyQueryResponse } from "../types/QueryResponse";
-import Person from "../types/Person";
-import { fakePerson } from "./fakePerson";
+import { Person } from "../types/Person";
+import { fakePerson } from "./fakeData/fakePerson";
+import { ListPersonsOptions } from "../types/BackendAPI";
 
-export function listPersons(options: {
-  term?: string;
-  count?: number;
-}): Promise<QueryResponse<Person>> {
+export default function listPersons(options: ListPersonsOptions): Promise<QueryResponse<Person>> {
   let count = 10;
-  if (options.count) {
-    count = options.count;
-  }
+  // if (options.count) {
+  //   count = options.count;
+  // }
 
   return new Promise(function (resolve, reject) {
     // fail 0.5% of the time
@@ -21,10 +19,13 @@ export function listPersons(options: {
     }
 
     let result = getEmptyQueryResponse<Person>();
+
+    result.count = faker.random.number({ min: 0, max: 1000 * 1000 })
+
     Array(Math.round(count * Math.random()))
       .fill({})
       .forEach(() => {
-        const newFakePerson = fakePerson(options.term || "");
+        const newFakePerson = fakePerson(options.searchParams.term || "");
         result.items.push(newFakePerson);
       });
 

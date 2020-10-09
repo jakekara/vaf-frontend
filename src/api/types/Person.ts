@@ -1,6 +1,8 @@
 import DateParts from "./DateParts";
 
-export default interface Person {
+export type PersonDetails = Person;
+
+export interface Person {
   id: string;
   name: string;
 
@@ -8,4 +10,6 @@ export default interface Person {
   birthDate?: DateParts;
   birthCountry?: string;
   birthCity?: string;
+
+  deathDate?: DateParts;
 }

@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
-import Person from "../../../api/types/Person";
+import { Person } from "../../../api/types/Person";
+import Card from "../../common/Card";
 import styles from "./PersonList.module.css";
 
 function Thumbnail(props: { person: Person }): ReactElement {
@@ -20,7 +21,7 @@ function Thumbnail(props: { person: Person }): ReactElement {
 function Left(props: { person: Person }): ReactElement {
   return (
     <div className={styles.Left}>
-      <Thumbnail person={props.person} />
+      {/* <Thumbnail person={props.person} /> */}
     </div>
   );
 }
@@ -60,11 +61,11 @@ function Right(props: { person: Person }): ReactElement {
 
 export function PersonListItem(props: { person: Person }): ReactElement {
   return (
-    <Link to={`/person/${props.person.id}`}>
+    <Card link={`/person/${props.person.id}`}>
       <div className={styles.PersonListItem}>
         <Left person={props.person} />
         <Right person={props.person} />
       </div>
-    </Link>
+    </Card>
   );
 }

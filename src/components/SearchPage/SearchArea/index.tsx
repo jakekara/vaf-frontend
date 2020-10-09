@@ -1,27 +1,29 @@
 import React, { ReactElement, useEffect, useRef, useState } from "react";
-import Person from "../../../api/types/Person";
-import * as api from "../../../api/faker";
+import { Person } from "../../../api/types/Person";
+import api from "../../../api/faker";
+import TypeAhead from "./TypeAhead";
+import styles from "./SearchArea.module.css";
 
 export function SearchArea(props: {
   onSearch: (term: string) => void;
 }): ReactElement {
   const [term, setTerm] = useState<string>("");
-  const [suggestions, setSuggestsions] = useState<Array<Person>>([]);
+  const [suggestions, setSuggestions] = useState<Array<Person>>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  function onChange(evt: React.ChangeEvent<HTMLInputElement>) {
-    setTerm(evt.target.value);
-  }
+  // function onChange(evt: React.ChangeEvent<HTMLInputElement>) {
+  //   setTerm(evt.target.value);
+  // }
 
   const getSuggestions = () => {
     if (term.trim().length < 1) {
-      setSuggestsions([]);
+      setSuggestions([]);
       return;
     }
     api
-      .listPersons({ term })
+      .listPersons({ searchParams: { term } })
       .then((response) => {
-        setSuggestsions(response.items);
+        setSuggestions(response.items);
       })
       .catch((error) => {
         console.error("realAPI.listPersons error:", error);
@@ -33,21 +35,24 @@ export function SearchArea(props: {
   let searchTerm = inputRef && inputRef.current ? inputRef.current.value : "";
   console.log("searchTerm", searchTerm);
   return (
-    <div>
-      <input ref={inputRef} onChange={onChange}></input>{" "}
-      <button
-        type="button"
-        onClick={() => {
-          setSuggestsions([]);
-          props.onSearch(searchTerm);
-        }}
-      >
-        Search
-      </button>
-      <div className="TypeaheadBox">
-        {suggestions.map((p: Person, i) => {
-          return <div key={i}>{p.name}</div>;
-        })}
+    <div className={styles.SearchArea}>
+      <div className="container">
+        <TypeAhead
+          handleClick={() => {
+            props.onSearch(searchTerm);
+          }}
+          suggestions={suggestions}
+          handleTermChanged={setTerm}
+        />
+        {/* <button
+          type="button"
+          onClick={() => {
+            setSuggestions([]);
+            props.onSearch(searchTerm);
+          }}
+        >
+          Search
+        </button> */}
       </div>
     </div>
   );

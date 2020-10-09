@@ -1,5 +1,11 @@
 .App {
-  max-width: 800px;
+  /* margin: 0px; */
+  /* max-width: 800px;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; */
+  /* background-color: #efefef; */
+}
+
+.App a {
+  /* text-decoration: unset; */
 }

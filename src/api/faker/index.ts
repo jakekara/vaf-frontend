@@ -1,4 +1,12 @@
-import { listPersons } from "./listPersons";
-import { getPersonDetails } from "./getPersonDetails";
+import listPersons from "./listPersons";
+import getPersonDetails from "./getPersonDetails";
+import getSourceMaterials from "./getSourceMaterials";
+import { BackendAPI } from "../types/BackendAPI";
 
-export { listPersons, getPersonDetails };
+const api: BackendAPI = {
+    listPersons,
+    getPersonDetails,
+    getSourceMaterials,
+};
+
+export default api;

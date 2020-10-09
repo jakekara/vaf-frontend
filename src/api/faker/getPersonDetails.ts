@@ -1,14 +1,15 @@
-import Person from "../types/Person";
-import { fakePerson, maybe } from "./fakePerson";
+import { Person } from "../types/Person";
+import { fakePerson } from "./fakeData/fakePerson";
+import { maybe } from "./utils/maybe";
 
 interface getPersonDetailsOptions {
   personID: string;
 }
-export function getPersonDetails(
+export default function getPersonDetails(
   options: getPersonDetailsOptions
 ): Promise<Person> {
   return new Promise((resolve, reject) => {
-    const person = maybe(fakePerson(""));
+    const person = maybe(fakePerson(""), 0.9);
     if (person) {
       resolve(person);
       return;

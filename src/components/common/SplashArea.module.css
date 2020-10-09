@@ -1,0 +1,13 @@
+.SplashArea{
+    padding: 40px 0px;
+    background-color: #222;
+    color:white;
+}
+
+.SplashArea.Sticky{
+    position: sticky;
+    top: 0;
+    padding: unset;
+    z-index: 10;
+    border: 1px solid red;
+}
