@@ -18,6 +18,6 @@ export const fakePerson = (term: string): Person => {
     birthDate,
     birthCity,
     birthCountry,
-    deathDate
+    deathDate,
   };
 };

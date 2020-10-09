@@ -1,22 +1,21 @@
 import React, { ReactElement } from "react";
-import { Link } from "react-router-dom";
 import { Person } from "../../../api/types/Person";
 import Card from "../../common/Card";
 import styles from "./PersonList.module.css";
 
-function Thumbnail(props: { person: Person }): ReactElement {
-  return (
-    <div className={styles.Thumbnail}>
-      {props.person.img ? (
-        <img
-          title={props.person.name}
-          alt={`Thumbnail preview for ${props.person.name}`}
-          src={props.person.img}
-        ></img>
-      ) : null}
-    </div>
-  );
-}
+// function Thumbnail(props: { person: Person }): ReactElement {
+//   return (
+//     <div className={styles.Thumbnail}>
+//       {props.person.img ? (
+//         <img
+//           title={props.person.name}
+//           alt={`Thumbnail preview for ${props.person.name}`}
+//           src={props.person.img}
+//         ></img>
+//       ) : null}
+//     </div>
+//   );
+// }
 
 function Left(props: { person: Person }): ReactElement {
   return (

@@ -4,9 +4,9 @@ import getSourceMaterials from "./getSourceMaterials";
 import { BackendAPI } from "../types/BackendAPI";
 
 const api: BackendAPI = {
-    listPersons,
-    getPersonDetails,
-    getSourceMaterials,
+  listPersons,
+  getPersonDetails,
+  getSourceMaterials,
 };
 
 export default api;

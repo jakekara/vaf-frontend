@@ -4,31 +4,29 @@ import fakeSourceMaterial from "./fakeData/fakeSourceMaterial";
 import { maybe } from "./utils/maybe";
 
 interface GetSourceMaterialsProps {
-    personID: string,
-    limit?: number
+  personID: string;
+  limit?: number;
 }
 
-export default function getSourceMaterials(props: GetSourceMaterialsProps): Promise<QueryResponse<SourceMaterial>> {
+export default function getSourceMaterials(
+  props: GetSourceMaterialsProps
+): Promise<QueryResponse<SourceMaterial>> {
+  const limit = props.limit || 10;
+  return new Promise((resolve, reject) => {
+    const count = Math.min(Math.round(Math.random() * 100), limit);
 
-    const limit = props.limit || 10;
-    return new Promise((resolve, reject) => {
+    const fakeSourceMaterials: Array<SourceMaterial> = new Array(count)
+      .fill(0)
+      .map(fakeSourceMaterial);
 
-        const count = Math.min(Math.round(Math.random() * 100), limit);
+    const simulateError: boolean = maybe(true, 0.2) || false;
 
-        const fakeSourceMaterials: Array<SourceMaterial> =
-            (new Array(count).fill(0)).map(fakeSourceMaterial);
-
-        const simulateError: boolean = maybe(true, 0.2) || false;
-
-        if (simulateError) {
-            reject("Failed to retrieve documents");
-        } else {
-            const ret: QueryResponse<SourceMaterial> = getEmptyQueryResponse();
-            ret.items = fakeSourceMaterials
-            resolve(ret);
-        }
-
-
-    });
-
+    if (simulateError) {
+      reject("Failed to retrieve documents");
+    } else {
+      const ret: QueryResponse<SourceMaterial> = getEmptyQueryResponse();
+      ret.items = fakeSourceMaterials;
+      resolve(ret);
+    }
+  });
 }

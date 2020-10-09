@@ -1,5 +1,4 @@
 import React from "react";
-import { isTemplateExpression } from "typescript";
 import SourceMaterial from "../../api/types/SourceMaterial";
 import Card from "../common/Card";
 import ObjectListing from "../common/ObjectListing";
