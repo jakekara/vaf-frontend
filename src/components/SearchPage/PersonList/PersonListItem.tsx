@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
-import Person from "../../api/types/Person";
+import { Link } from "react-router-dom";
+import Person from "../../../api/types/Person";
 import styles from "./PersonList.module.css";
 
 function Thumbnail(props: { person: Person }): ReactElement {
@@ -7,6 +8,7 @@ function Thumbnail(props: { person: Person }): ReactElement {
     <div className={styles.Thumbnail}>
       {props.person.img ? (
         <img
+          title={props.person.name}
           alt={`Thumbnail preview for ${props.person.name}`}
           src={props.person.img}
         ></img>
@@ -43,6 +45,7 @@ function Right(props: { person: Person }): ReactElement {
       <h2>{props.person.name}</h2>
       <div className={styles.Details}>
         <div className={styles.Detail}>
+          <Detail label="Authority ID" value={props.person.id.slice(0, 8)} />
           <Detail
             label="Date of birth"
             value={props.person.birthDate?.toString()}
@@ -57,9 +60,11 @@ function Right(props: { person: Person }): ReactElement {
 
 export function PersonListItem(props: { person: Person }): ReactElement {
   return (
-    <div className={styles.PersonListItem}>
-      <Left person={props.person} />
-      <Right person={props.person} />
-    </div>
+    <Link to={`/person/${props.person.id}`}>
+      <div className={styles.PersonListItem}>
+        <Left person={props.person} />
+        <Right person={props.person} />
+      </div>
+    </Link>
   );
 }

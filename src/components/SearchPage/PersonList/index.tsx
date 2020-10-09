@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { PersonListItem } from "./PersonListItem";
-import Person from "../../api/types/Person";
 import styles from "./PersonList.module.css";
+import Person from "../../../api/types/Person";
 
 export function PersonList(props: {
   items: Array<Person>;

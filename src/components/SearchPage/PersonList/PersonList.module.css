@@ -4,6 +4,15 @@
   margin: 22px 0px;
   background-color: #efefef;
   border-radius: 3px;
+  min-height: 130px;
+  border-bottom: 9px solid transparent;
+}
+
+.PersonListItem:hover {
+  cursor: pointer;
+  border-color: #999;
+  transition: border-color 1s;
+  transition-timing-function: ease;
 }
 
 .PersonListItem * {
