@@ -1,16 +1,17 @@
-import { getEmptyQueryResponse, QueryResponse } from "../types/QueryResponse";
+import { GetSourceMaterialsOptions } from "../types/BackendAPI";
+import { getEmptyQueryResponse, ItemListResponse } from "../types/QueryResponse";
 import SourceMaterial from "../types/SourceMaterial";
 import fakeSourceMaterial from "./fakeData/fakeSourceMaterial";
 import { maybe } from "./utils/maybe";
 
-interface GetSourceMaterialsProps {
-  personID: string;
-  limit?: number;
-}
+// export interface GetSourceMaterialsProps {
+//   personID: string;
+//   limit?: number;
+// }
 
 export default function getSourceMaterials(
-  props: GetSourceMaterialsProps
-): Promise<QueryResponse<SourceMaterial>> {
+  props: GetSourceMaterialsOptions
+): Promise<ItemListResponse<SourceMaterial>> {
   const limit = props.limit || 10;
   return new Promise((resolve, reject) => {
     const count = Math.min(Math.round(Math.random() * 100), limit);
@@ -24,7 +25,7 @@ export default function getSourceMaterials(
     if (simulateError) {
       reject("Failed to retrieve documents");
     } else {
-      const ret: QueryResponse<SourceMaterial> = getEmptyQueryResponse();
+      const ret: ItemListResponse<SourceMaterial> = getEmptyQueryResponse();
       ret.items = fakeSourceMaterials;
       resolve(ret);
     }

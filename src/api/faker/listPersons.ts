@@ -1,12 +1,12 @@
 import * as faker from "faker";
-import { QueryResponse, getEmptyQueryResponse } from "../types/QueryResponse";
+import { ItemListResponse, getEmptyQueryResponse } from "../types/QueryResponse";
 import { Person } from "../types/Person";
 import { fakePerson } from "./fakeData/fakePerson";
 import { ListPersonsOptions } from "../types/BackendAPI";
 
 export default function listPersons(
   options: ListPersonsOptions
-): Promise<QueryResponse<Person>> {
+): Promise<ItemListResponse<Person>> {
   let count = 10;
   // if (options.count) {
   //   count = options.count;

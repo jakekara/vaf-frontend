@@ -8,7 +8,7 @@ function SourceMaterialListItem(props: { item: SourceMaterial }): JSX.Element {
     <div>
       <Card link={props.item.url}>
         <h4>{props.item.title}</h4>
-        <ObjectListing attributes={props.item} />
+        <ObjectListing attributes={props.item.attributes || {}} />
       </Card>
     </div>
   );

@@ -3,15 +3,16 @@ import { SearchArea } from "./SearchArea";
 import { PersonList } from "./PersonList";
 import { Person } from "../../api/types/Person";
 
-import api from "../../api/faker";
+// import api from "../../api/faker";
+import api from "../../api/real";
 import SearchSummary from "./SearchSummary";
-import { QueryResponse } from "../../api/types/QueryResponse";
+import { ItemListResponse } from "../../api/types/QueryResponse";
 import SplashArea from "../common/SplashArea";
 
 function SearchPage() {
   // const [resultItems, setResultItems] = useState<Array<Person>>([]);
   const [resultsResponse, setResultsResponse] = useState<
-    QueryResponse<Person>
+    ItemListResponse<Person>
   >();
   const [searchTerm, setSearchTerm] = useState<string>();
 

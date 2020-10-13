@@ -1,12 +1,10 @@
+import { GetPersonDetailsOptions } from "../types/BackendAPI";
 import { Person } from "../types/Person";
 import { fakePerson } from "./fakeData/fakePerson";
 import { maybe } from "./utils/maybe";
 
-interface getPersonDetailsOptions {
-  personID: string;
-}
 export default function getPersonDetails(
-  options: getPersonDetailsOptions
+  options: GetPersonDetailsOptions
 ): Promise<Person> {
   return new Promise((resolve, reject) => {
     const person = maybe(fakePerson(""), 0.9);

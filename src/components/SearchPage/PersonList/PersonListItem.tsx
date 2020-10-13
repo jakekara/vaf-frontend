@@ -45,7 +45,7 @@ function Right(props: { person: Person }): ReactElement {
       <h2>{props.person.name}</h2>
       <div className={styles.Details}>
         <div className={styles.Detail}>
-          <Detail label="Authority ID" value={props.person.id.slice(0, 8)} />
+          <Detail label="Authority ID" value={props.person.id} />
           <Detail
             label="Date of birth"
             value={props.person.birthDate?.toString()}
