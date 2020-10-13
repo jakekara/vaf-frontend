@@ -6,6 +6,10 @@ export interface Person {
   id: string;
   name: string;
 
+  attributes?: {
+    [key: string]: any;
+  }
+
   img?: string;
   birthDate?: DateParts;
   birthCountry?: string;

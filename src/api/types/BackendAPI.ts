@@ -1,5 +1,5 @@
 import { Person, PersonDetails } from "./Person";
-import { QueryResponse } from "./QueryResponse";
+import { ItemListResponse } from "./QueryResponse";
 import SourceMaterial from "./SourceMaterial";
 
 export interface ListPersonsOptions {
@@ -23,12 +23,13 @@ export interface GetPersonDetailsOptions {
 
 export interface GetSourceMaterialsOptions {
   personID: string;
+  limit?: number
 }
 
 export interface BackendAPI {
-  listPersons(options: ListPersonsOptions): Promise<QueryResponse<Person>>;
+  listPersons(options: ListPersonsOptions): Promise<ItemListResponse<Person>>;
   getPersonDetails(options: GetPersonDetailsOptions): Promise<PersonDetails>;
   getSourceMaterials(
     options: GetSourceMaterialsOptions
-  ): Promise<QueryResponse<SourceMaterial>>;
+  ): Promise<ItemListResponse<SourceMaterial>>;
 }

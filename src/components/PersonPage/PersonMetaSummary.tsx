@@ -15,7 +15,7 @@ export default function PersonMetaSummary(
       <div className="container">
         <h1 className={""}>{props.person.name}</h1>
 
-        <ObjectListing attributes={props.person} />
+        <ObjectListing attributes={props.person.attributes || {}} />
       </div>
     </div>
   );

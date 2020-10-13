@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Person } from "../../api/types/Person";
-import api from "../../api/faker";
+// import api from "../../api/faker";
+import api from "../../api/real";
 import SourceMaterial from "../../api/types/SourceMaterial";
 import SourceMaterialList from "./SourceMaterialList";
 import PersonMetaSummary from "./PersonMetaSummary";
