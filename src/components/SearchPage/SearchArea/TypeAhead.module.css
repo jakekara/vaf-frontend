@@ -27,10 +27,13 @@
   /* transition: 1s opacity; */
   transition: 250ms opacity;
   opacity: unset;
+  height: unset;
 }
 
 .TypeAhead .Bottom.Hidden {
   opacity: 0;
+  height: 0px;
+  overflow: hidden;
 }
 
 .SuggestionList {

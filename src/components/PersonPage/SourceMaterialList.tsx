@@ -4,10 +4,27 @@ import Card from "../common/Card";
 import ObjectListing from "../common/ObjectListing";
 
 function SourceMaterialListItem(props: { item: SourceMaterial }): JSX.Element {
+  const identifierKey = "TracingDocumentNumber";
+  let identifierLink = <div></div>;
+
+  if (props.item.attributes && props.item.attributes[identifierKey]) {
+    const identifier = props.item.attributes[identifierKey];
+    identifierLink = (
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={`https://collections.arolsen-archives.org/en/archive/&doc_id=${identifier}`}
+      >
+        View
+      </a>
+    );
+  }
+
   return (
     <div>
       <Card link={props.item.url}>
         <h4>{props.item.title}</h4>
+        {identifierLink}
         <ObjectListing attributes={props.item.attributes || {}} />
       </Card>
     </div>
