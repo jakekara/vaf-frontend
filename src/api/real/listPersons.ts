@@ -41,7 +41,7 @@ export default function listPersons(
           .filter((a: any) => typeof a !== "undefined");
         console.log("cleanResponse", cleanResponse);
         resolve(cleanResponse);
-        reject("Not implemented");
+        // reject("Not implemented");
       });
     });
   });

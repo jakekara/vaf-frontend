@@ -4,18 +4,22 @@ import api from "../../../api/real";
 import TypeAhead from "./TypeAhead";
 import styles from "./SearchArea.module.css";
 
+const DELAY_MS = 200;
+
 export function SearchArea(props: {
   onSearch: (term: string) => void;
 }): ReactElement {
   const [term, setTerm] = useState<string>("");
   const [suggestions, setSuggestions] = useState<Array<Person>>([]);
+  const [throttle, setThrottle] = useState<any>();
 
   // function onChange(evt: React.ChangeEvent<HTMLInputElement>) {
   //   setTerm(evt.target.value);
   // }
 
   const getSuggestions = () => {
-    if (term.trim().length < 1) {
+    // require at least two characters
+    if (term.trim().length < 2) {
       setSuggestions([]);
       return;
     }
@@ -27,9 +31,19 @@ export function SearchArea(props: {
       .catch((error) => {
         console.error("realAPI.listPersons error:", error);
       });
+
+    setThrottle(undefined);
   };
 
-  useEffect(getSuggestions, [term]);
+  const getSuggestionsThrottled = () => {
+    if (throttle) {
+      console.log("Clearing throttle", throttle, typeof throttle);
+      clearInterval(throttle);
+    }
+    setThrottle(setTimeout(getSuggestions, DELAY_MS));
+  };
+
+  useEffect(getSuggestionsThrottled, [term]);
 
   return (
     <div className={styles.SearchArea}>
