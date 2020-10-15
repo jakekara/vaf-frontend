@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { Person } from "../../../api/types/Person";
-import api from "../../../api/faker";
+import api from "../../../api/real";
 import TypeAhead from "./TypeAhead";
 import styles from "./SearchArea.module.css";
 
@@ -20,9 +20,9 @@ export function SearchArea(props: {
       return;
     }
     api
-      .listPersons({ searchParams: { term } })
-      .then((response) => {
-        setSuggestions(response.items);
+      .suggestPersons(term)
+      .then((items) => {
+        setSuggestions(items);
       })
       .catch((error) => {
         console.error("realAPI.listPersons error:", error);

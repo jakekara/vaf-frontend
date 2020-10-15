@@ -8,7 +8,7 @@ export interface Person {
 
   attributes?: {
     [key: string]: any;
-  }
+  };
 
   img?: string;
   birthDate?: DateParts;

@@ -1,5 +1,8 @@
 import * as faker from "faker";
-import { ItemListResponse, getEmptyQueryResponse } from "../types/QueryResponse";
+import {
+  ItemListResponse,
+  getEmptyQueryResponse,
+} from "../types/QueryResponse";
 import { Person } from "../types/Person";
 import { fakePerson } from "./fakeData/fakePerson";
 import { ListPersonsOptions } from "../types/BackendAPI";

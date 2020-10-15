@@ -1,5 +1,8 @@
 import { GetSourceMaterialsOptions } from "../types/BackendAPI";
-import { getEmptyQueryResponse, ItemListResponse } from "../types/QueryResponse";
+import {
+  getEmptyQueryResponse,
+  ItemListResponse,
+} from "../types/QueryResponse";
 import SourceMaterial from "../types/SourceMaterial";
 import fakeSourceMaterial from "./fakeData/fakeSourceMaterial";
 import { maybe } from "./utils/maybe";

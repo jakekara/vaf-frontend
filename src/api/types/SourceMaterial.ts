@@ -3,7 +3,7 @@ export default interface SourceMaterial {
 
   attributes?: {
     [key: string]: any;
-  }
+  };
 
   title: string;
   url?: string;
