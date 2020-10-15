@@ -7,7 +7,6 @@ import {
 import convertRawItemToPerson from "./utils/convertRawItemToPerson";
 import performGET from "./utils/performGet";
 
-
 export default function listPersons(
   options: ListPersonsOptions
 ): Promise<ItemListResponse<Person>> {

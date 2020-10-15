@@ -7,7 +7,8 @@ const api: BackendAPI = {
   listPersons,
   getPersonDetails,
   getSourceMaterials,
-  suggestPersons: (searchTerm: string) => new Promise((_, reject) => reject("Not implemented"))
+  suggestPersons: (searchTerm: string) =>
+    new Promise((_, reject) => reject("Not implemented")),
 };
 
 export default api;

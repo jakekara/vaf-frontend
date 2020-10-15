@@ -8,7 +8,7 @@ const api: BackendAPI = {
   listPersons,
   getSourceMaterials,
   getPersonDetails,
-  suggestPersons
+  suggestPersons,
 };
 
 export default api;

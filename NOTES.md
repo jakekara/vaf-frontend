@@ -4,6 +4,9 @@ The generic documentation on the Spinque API syntax is described in https://docs
 
 https://rest.spinque.com/2.5/arolsenarchives/api/fortunoff/q/persons/results?config=full2
 
+- [ suggested ] this should suggest type-ahead values for the search field
+  https://rest.spinque.com/2.5/arolsenarchives/api/fortunoff/q/suggest/p/text/James/results?config=full2
+
 - Get person details given an id from Fortunoff
 
 https://rest.spinque.com/2.5/arolsenarchives/api/fortunoff/q/person/p/id/45507/results?config=full2
