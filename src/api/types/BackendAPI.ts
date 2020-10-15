@@ -23,11 +23,12 @@ export interface GetPersonDetailsOptions {
 
 export interface GetSourceMaterialsOptions {
   personID: string;
-  limit?: number
+  limit?: number;
 }
 
 export interface BackendAPI {
   listPersons(options: ListPersonsOptions): Promise<ItemListResponse<Person>>;
+  suggestPersons(searchTerm: string): Promise<Array<Person>>;
   getPersonDetails(options: GetPersonDetailsOptions): Promise<PersonDetails>;
   getSourceMaterials(
     options: GetSourceMaterialsOptions

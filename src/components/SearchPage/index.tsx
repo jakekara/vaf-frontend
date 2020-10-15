@@ -16,6 +16,10 @@ function SearchPage() {
   >();
   const [searchTerm, setSearchTerm] = useState<string>();
 
+  // TODO - Add lazy loading more results
+  // const [offset, setOffset] = useState<number>(0);
+  const offset = 0;
+
   function doSearch() {
     // allow to default to all results
     // if (searchTerm === undefined) {
@@ -23,7 +27,7 @@ function SearchPage() {
     // }
 
     api
-      .listPersons({ searchParams: { term: searchTerm } })
+      .listPersons({ offset, searchParams: { term: searchTerm } })
       .then((response) => {
         setResultsResponse(response);
         // console.log("Got response", response);
@@ -33,7 +37,7 @@ function SearchPage() {
         console.error("realAPI.listPersons error:", error);
       });
 
-    setSearchTerm("");
+    // setSearchTerm("");
   }
   useEffect(doSearch, [searchTerm]);
 
@@ -42,7 +46,7 @@ function SearchPage() {
       <SplashArea>
         <SearchArea onSearch={setSearchTerm} />
         <SearchSummary
-          resultCount={resultsResponse?.count || 0}
+          resultCount={resultsResponse?.totalResults || 0}
           searchTerm={searchTerm || ""}
         ></SearchSummary>
       </SplashArea>
