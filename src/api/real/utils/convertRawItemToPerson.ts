@@ -13,7 +13,7 @@ export default function convertRawItemToPerson(
     const firstName = itemDetails.attributes["http://schema.org/givenName"];
     const lastName = itemDetails.attributes["http://schema.org/familyName"];
     const id = itemDetails.attributes["http://schema.org/identifier"];
-    const name = `${lastName}, ${firstName}`;
+    const name = `${lastName.slice(0, 1)}., ${firstName}`;
     return {
       id,
       name,
